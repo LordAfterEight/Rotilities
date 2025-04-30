@@ -1,7 +1,22 @@
 #![doc()]
 //! # Description
+//! Helper crate to easily use the Rodio audio playback library by providing helper functions
 //! 
-//!
+//! This crate aims to simplify using Rodio in your projects by providing many functions to easily
+//! create sinks and play audio with only a few lines of code.
+//! 
+//! Playing a sound is as simple as this:
+//! ```
+//! use rotilities::*;
+//! 
+//! fn main() {
+//!     let sink = new_sink();
+//!     play_audio(&sink, "file.mp3");
+//!     loop{}
+//! }
+//! ```
+//! 
+//! #### And in depth documentation is coming soon!
 
 
 use std::{fs::File, io::BufReader};

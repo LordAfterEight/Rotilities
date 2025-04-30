@@ -1,12 +1,13 @@
 [package]
 name = "rotilities"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2024"
 description = "A helper crate to easily use Rodio in your projects"
 license = "MIT OR Apache-2.0"
 keywords = ["rodio", "audio", "sound", "easy", "utilities"]
 categories = ["game-development", "multimedia::audio"]
 repository = "https://github.com/LordAfterEight/Rotilities"
+documentation = "https://docs.rs/rotilities/latest/rotilities"
 
 [dependencies]
 rodio = "0.20.1"
