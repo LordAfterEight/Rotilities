@@ -1,0 +1,11 @@
+[package]
+name = "rotilities"
+version = "0.1.0"
+edition = "2024"
+description = "A helper crate to easily use Rodio in your projects"
+license = "MIT OR Apache-2.0"
+keywords = ["rodio","audio","audio playback","sound","easy","simple","utilities","playback"]
+categories = ["game-development","multimedia::audio"]
+build = "build.rs"
+
+[dependencies]
