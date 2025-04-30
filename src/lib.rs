@@ -14,6 +14,9 @@
 //!     play_audio(&sink, "file.mp3");
 //!     loop{}
 //! }
+//! 
+//! ### NOTE THAT EVEN THE LATEST VERSION CURRENTLY DOES NOT SEEM TO WORK
+//! #### I am trying to find and fix the issue right now
 //! ```
 
 
