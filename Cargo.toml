@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2024"
 description = "A helper crate to easily use Rodio in your projects"
 license = "MIT OR Apache-2.0"
-keywords = ["rodio","audio","audio playback","sound","easy","simple","utilities","playback","helper"]
-categories = ["game-development","multimedia::audio"]
+keywords = ["rodio", "audio", "sound", "easy", "utilities"]
+categories = ["game-development", "multimedia::audio"]
 repository = "https://github.com/LordAfterEight/Rotilities"
 
 [dependencies]
