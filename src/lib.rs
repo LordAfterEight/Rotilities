@@ -1,7 +1,13 @@
+#![doc()]
+//! # Description
+//! 
+//!
+
+
 use std::{fs::File, io::BufReader};
 use rodio::Decoder;
 
-
+///Internal helper function for this crate
 pub fn get_source(filename: &str) -> Decoder<BufReader<File>> {
     let source = rodio::Decoder::new(
         BufReader::new(
@@ -126,7 +132,7 @@ pub fn set_audio_volume(sink: &rodio::Sink, volume: f32) {
 
 
 /// This function will create its own Sink and directly play audio using it.
-/// -> Less Control but useful for playing short or multiple overlapping sound
+/// -> Less Control but useful for playing short or multiple overlapping sounds
 pub fn play_audio_once(filename: &str) {
     let sink = new_sink();
     play_audio(&sink, filename);
