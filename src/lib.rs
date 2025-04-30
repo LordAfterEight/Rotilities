@@ -15,8 +15,6 @@
 //!     loop{}
 //! }
 //! ```
-//! 
-//! #### An in depth documentation is coming soon!
 
 
 use std::{fs::File, io::BufReader};
@@ -60,10 +58,11 @@ pub fn new_sink() -> rodio::Sink {
 ///
 /// ```
 /// let sink = new_sink();
-/// play_audio(sink, "file.mp3");
+/// play_audio(&sink, "file.mp3");
 /// ```
-pub fn play_audio(sink: &rodio::Sink, filename: &str) {
+pub fn play_audio(sink: rodio::Sink, filename: &str) -> rodio::Sink {
     sink.append(get_source(filename));
+    return sink
 }
 
 /// Stops audio playback and clears the queue of a sink
@@ -81,8 +80,9 @@ pub fn play_audio(sink: &rodio::Sink, filename: &str) {
 ///
 /// stop_audio(&sink);
 /// ```
-pub fn stop_audio(sink: &rodio::Sink) {
+pub fn stop_audio(sink: rodio::Sink) -> rodio::Sink {
     sink.stop();
+    return sink;
 }
 
 /// Pauses audio playback of a sink without affecting the sink's queue.
@@ -100,8 +100,9 @@ pub fn stop_audio(sink: &rodio::Sink) {
 ///
 /// pause_audio(&sink);
 /// ```
-pub fn pause_audio(sink: &rodio::Sink) {
+pub fn pause_audio(sink: rodio::Sink) -> rodio::Sink {
     sink.pause();
+    return sink;
 }
 
 /// Resumes audio playback of a sink.
@@ -122,8 +123,9 @@ pub fn pause_audio(sink: &rodio::Sink) {
 ///
 /// resume_audio(&sink);
 /// ```
-pub fn resume_audio(sink: &rodio::Sink) {
+pub fn resume_audio(sink: rodio::Sink) -> rodio::Sink {
     sink.play();
+    return sink;
 }
 
 /// Set the volume level of a sink.
@@ -141,14 +143,15 @@ pub fn resume_audio(sink: &rodio::Sink) {
 ///
 /// set_audio_volume(&sink, 0.5);
 /// ```
-pub fn set_audio_volume(sink: &rodio::Sink, volume: f32) {
+pub fn set_audio_volume(sink: rodio::Sink, volume: f32) -> rodio::Sink {
     sink.set_volume(volume);
+    return sink;
 }
 
 
 /// This function will create its own Sink and directly play audio using it.
 /// -> Less Control but useful for playing short or multiple overlapping sounds
-pub fn play_audio_once(filename: &str) {
+pub fn play_audio_once(filename: &str){
     let sink = new_sink();
-    play_audio(&sink, filename);
+    play_audio(sink, filename);
 }
