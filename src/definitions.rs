@@ -10,3 +10,5 @@ pub fn get_source(filename: &str) -> Decoder<BufReader<File>> {
     );
     return source.expect("Failed to decode file")
 }
+
+pub fn new_sink() {}
