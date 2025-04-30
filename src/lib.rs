@@ -41,7 +41,7 @@ pub fn new_sink() -> rodio::Sink {
 /// let sink = new_sink();
 /// play_audio(sink, "file.mp3");
 /// ```
-pub fn play_audio(sink: rodio::Sink, filename: &str) {
+pub fn play_audio(sink: &rodio::Sink, filename: &str) {
     sink.append(get_source(filename));
 }
 
@@ -55,12 +55,12 @@ pub fn play_audio(sink: rodio::Sink, filename: &str) {
 ///
 /// let sink = new_sink();
 ///
-/// play_audio(sink, "file.mp3");
+/// play_audio(&sink, "file.mp3");
 /// std::thread::sleep(std::time::Duration::from_secs(5));
 ///
-/// stop_audio(sink);
+/// stop_audio(&sink);
 /// ```
-pub fn stop_audio(sink: rodio::Sink) {
+pub fn stop_audio(sink: &rodio::Sink) {
     sink.stop();
 }
 
@@ -74,12 +74,12 @@ pub fn stop_audio(sink: rodio::Sink) {
 ///
 /// let sink = new_sink();
 ///
-/// play_audio(sink, "file.mp3");
+/// play_audio(&sink, "file.mp3");
 /// std::thread::sleep(std::time::Duration::from_secs(5));
 ///
-/// pause_audio(sink);
+/// pause_audio(&sink);
 /// ```
-pub fn pause_audio(sink: rodio::Sink) {
+pub fn pause_audio(sink: &rodio::Sink) {
     sink.pause();
 }
 
@@ -93,15 +93,15 @@ pub fn pause_audio(sink: rodio::Sink) {
 ///
 /// let sink = new_sink();
 ///
-/// play_audio(sink, "file.mp3");
+/// play_audio(&sink, "file.mp3");
 /// std::thread::sleep(std::time::Duration::from_secs(5));
 ///
-/// pause_audio(sink);
+/// pause_audio(&sink);
 /// std::thread::sleep(std::time::Duration::from_secs(2));
 ///
-/// resume_audio(sink);
+/// resume_audio(&sink);
 /// ```
-pub fn resume_audio(sink: rodio::Sink) {
+pub fn resume_audio(sink: &rodio::Sink) {
     sink.play();
 }
 
@@ -115,12 +115,12 @@ pub fn resume_audio(sink: rodio::Sink) {
 ///
 /// let sink = new_sink();
 ///
-/// play_audio(sink, "file.mp3");
+/// play_audio(&sink, "file.mp3");
 /// std::thread::sleep(std::time::Duration::from_secs(5));
 ///
-/// set_audio_volume(sink, 0.5);
+/// set_audio_volume(&sink, 0.5);
 /// ```
-pub fn set_audio_volume(sink: rodio::Sink, volume: f32) {
+pub fn set_audio_volume(sink: &rodio::Sink, volume: f32) {
     sink.set_volume(volume);
 }
 
@@ -129,5 +129,5 @@ pub fn set_audio_volume(sink: rodio::Sink, volume: f32) {
 /// -> Less Control but useful for playing short or multiple overlapping sound
 pub fn play_audio_once(filename: &str) {
     let sink = new_sink();
-    play_audio(sink, filename);
+    play_audio(&sink, filename);
 }
