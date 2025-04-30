@@ -16,7 +16,7 @@
 //! }
 //! ```
 //! 
-//! #### And in depth documentation is coming soon!
+//! #### An in depth documentation is coming soon!
 
 
 use std::{fs::File, io::BufReader};
