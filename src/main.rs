@@ -1,5 +1,6 @@
 mod definitions;
+use definitions::*;
 
 fn main() {
-    println!("Hello, world!");
+    play_audio_once("music4.mp3");
 }
