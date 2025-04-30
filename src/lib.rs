@@ -45,7 +45,7 @@ pub fn play_audio(sink: &rodio::Sink, filename: &str) {
     sink.append(get_source(filename));
 }
 
-/// Stops audio playback and clears the queue of a sink.
+/// Stops audio playback and clears the queue of a sink
 /// Requires an existing sink
 ///
 /// # Example
