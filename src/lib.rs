@@ -1,5 +1,5 @@
 #![doc()]
-//! # Description
+
 //! Helper crate to easily use the Rodio audio playback library by providing helper functions
 //! 
 //! This crate aims to simplify using Rodio in your projects by providing many functions to easily
@@ -26,13 +26,18 @@ use rodio::Decoder;
 pub fn get_source(filename: &str) -> Decoder<BufReader<File>> {
     let source = rodio::Decoder::new(
         BufReader::new(
-            File::open(format!("./{filename}"))
+            File::open(format!("{filename}"))
                 .expect("Failed to open file")
         )
     );
     return source.expect("Failed to decode file")
 }
 
+///This function "initiates" the crucial part of audio output, the stream and stream handle, and is thus always required
+pub fn init() -> (rodio::OutputStream, rodio::OutputStreamHandle) {
+    return rodio::OutputStream::try_default()
+        .expect("Creating OuputStream Failed")
+}
 
 ///This function creates a sink (audio stream) and returns it (for example to a variable).
 ///-> Maximum control, all Rodio sink functions work with this
@@ -42,12 +47,8 @@ pub fn get_source(filename: &str) -> Decoder<BufReader<File>> {
 /// ```
 /// let sink = new_sink();
 /// ```
-pub fn new_sink() -> rodio::Sink {
-    let (_stream,stream_handle) = rodio::OutputStream::try_default()
-        .expect("Creating OuputStream Failed");
-    let sink = rodio::Sink::try_new(&stream_handle)
-        .expect("Sink creation failed");
-    return sink;
+pub fn new_sink(stream_handle: &rodio::OutputStreamHandle) -> rodio::Sink {
+    return rodio::Sink::try_new(stream_handle).expect("Sink creation failed")
 }
 
 
@@ -63,7 +64,7 @@ pub fn new_sink() -> rodio::Sink {
 /// play_audio(&sink, "file.mp3");
 /// ```
 pub fn play_audio(sink: rodio::Sink, filename: &str) -> rodio::Sink {
-    sink.append(get_source(filename));
+    sink.append(get_source(&format!("{filename}")));
     return sink
 }
 
@@ -84,7 +85,7 @@ pub fn play_audio(sink: rodio::Sink, filename: &str) -> rodio::Sink {
 /// ```
 pub fn stop_audio(sink: rodio::Sink) -> rodio::Sink {
     sink.stop();
-    return sink;
+    return sink
 }
 
 /// Pauses audio playback of a sink without affecting the sink's queue.
@@ -104,7 +105,7 @@ pub fn stop_audio(sink: rodio::Sink) -> rodio::Sink {
 /// ```
 pub fn pause_audio(sink: rodio::Sink) -> rodio::Sink {
     sink.pause();
-    return sink;
+    return sink
 }
 
 /// Resumes audio playback of a sink.
@@ -127,7 +128,7 @@ pub fn pause_audio(sink: rodio::Sink) -> rodio::Sink {
 /// ```
 pub fn resume_audio(sink: rodio::Sink) -> rodio::Sink {
     sink.play();
-    return sink;
+    return sink
 }
 
 /// Set the volume level of a sink.
@@ -147,13 +148,13 @@ pub fn resume_audio(sink: rodio::Sink) -> rodio::Sink {
 /// ```
 pub fn set_audio_volume(sink: rodio::Sink, volume: f32) -> rodio::Sink {
     sink.set_volume(volume);
-    return sink;
+    return sink
 }
 
 
 /// This function will create its own Sink and directly play audio using it.
 /// -> Less Control but useful for playing short or multiple overlapping sounds
-pub fn play_audio_once(filename: &str){
-    let sink = new_sink();
+pub fn play_audio_once(stream_handle: &rodio::OutputStreamHandle, filename: &str){
+    let sink = new_sink(stream_handle);
     play_audio(sink, filename);
 }
