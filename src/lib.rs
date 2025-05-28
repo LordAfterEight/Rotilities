@@ -160,16 +160,16 @@ pub fn new_sink(_p: &String) -> String {
 }
 
 #[cfg(target_arch = "aarch64")]
-pub fn play_audio(_p: String, _s: &str) {}
+pub fn play_audio(_p: &String, _s: &str) {}
 
 #[cfg(target_arch = "aarch64")]
-pub fn stop_audio(_p: String) {}
+pub fn stop_audio(_p: &String) {}
 
 #[cfg(target_arch = "aarch64")]
-pub fn pause_audio(_p: String) {}
+pub fn pause_audio(_p: &String) {}
 
 #[cfg(target_arch = "aarch64")]
-pub fn resume_audio(_p: String) {}
+pub fn resume_audio(_p: &String) {}
 
 #[cfg(target_arch = "aarch64")]
-pub fn set_audio_volume(_p: String,_p2: f32) {}
+pub fn set_audio_volume(_p: &String,_p2: f32) {}
