@@ -158,7 +158,7 @@ pub fn init() -> (String,String) {
 pub fn new_sink(_p: &String) {}
 
 #[cfg(target_arch = "aarch64")]
-pub fn play_audio(_p: String) {}
+pub fn play_audio(_p: String, _s: &str) {}
 
 #[cfg(target_arch = "aarch64")]
 pub fn stop_audio(_p: String) {}
