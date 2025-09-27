@@ -23,6 +23,8 @@ use std::{fs::File, io::BufReader};
 #[cfg(not(target_arch = "aarch64"))]
 use rodio::Decoder;
 
+pub use rodio::Sink;
+
 ///Internal helper function for this crate
 #[cfg(not(target_arch = "aarch64"))]
 pub fn get_source(filename: &str) -> Decoder<BufReader<File>> {
