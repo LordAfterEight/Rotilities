@@ -25,6 +25,7 @@ use rodio::Decoder;
 
 pub use rodio::Sink;
 pub use rodio::OutputStreamHandle;
+pub use rodio::OutputStream;
 
 ///Internal helper function for this crate
 #[cfg(not(target_arch = "aarch64"))]
