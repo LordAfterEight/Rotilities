@@ -24,6 +24,7 @@ use std::{fs::File, io::BufReader};
 use rodio::Decoder;
 
 pub use rodio::Sink;
+pub use rodio::OutputStreamHandle;
 
 ///Internal helper function for this crate
 #[cfg(not(target_arch = "aarch64"))]
